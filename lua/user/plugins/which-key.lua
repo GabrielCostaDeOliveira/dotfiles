@@ -109,12 +109,14 @@ return {
       ["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
 
       p = {
-        name = "Packer",
-        c = { "<cmd>PackerCompile<cr>", "Compile" },
-        i = { "<cmd>PackerInstall<cr>", "Install" },
-        s = { "<cmd>PackerSync<cr>", "Sync" },
-        S = { "<cmd>PackerStatus<cr>", "Status" },
-        u = { "<cmd>PackerUpdate<cr>", "Update" },
+        name = "Plugin Manager (Lazy)",
+        s = { "<cmd>Lazy sync<cr>", "Sync (update + clean)" },
+        i = { "<cmd>Lazy install<cr>", "Install new plugins" },
+        u = { "<cmd>Lazy update<cr>", "Update plugins" },
+        c = { "<cmd>Lazy clean<cr>", "Clean unused plugins" },
+        S = { "<cmd>Lazy<cr>", "Status (UI)" },
+        l = { "<cmd>Lazy log<cr>", "View log" },
+        d = { "<cmd>Lazy debug<cr>", "Debug info" },
       },
 
       g = {
