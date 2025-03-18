@@ -35,10 +35,10 @@
   border-radius: 1rem;
 }
 
-#custom-music,
+#clock,
 #tray,
 #backlight,
-#clock,
+#network,
 #battery,
 #pulseaudio,
 #custom-lock,
@@ -48,7 +48,7 @@
   margin: 5px 0;
 }
 
-#clock {
+#network {
   color: @blue;
   border-radius: 0px 1rem 1rem 0px;
   margin-right: 1rem;
@@ -80,7 +80,7 @@
   margin-left: 1rem;
 }
 
-#custom-music {
+#clock {
   color: @mauve;
   border-radius: 1rem;
 }

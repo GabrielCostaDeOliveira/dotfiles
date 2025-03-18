@@ -4,16 +4,15 @@
     // "width": 1280, // Waybar width
     // Choose the order of the modules
     "modules-left": ["hyprland/workspaces"],
-    "modules-center": ["custom/music"],
-    "modules-right": ["pulseaudio", "backlight", "battery", "clock", "tray", "custom/lock", "custom/power"],
-    "hyprland/workspaces": {
-         "disable-scroll": true,
-         "sort-by-name": true,
-         "format": " {icon} ",
-         "format-icons": {
-             "default": ""
-         }
-     },
+    "modules-center": ["clock"],
+    "modules-right": ["pulseaudio", "backlight", "battery", "network", "tray", "custom/lock", "custom/power"],
+    "network": {
+      "format-wifi": "<span size='13000'>   </span>{essid}",
+      "format-ethernet": "<span size='13000'> 󰤭  </span> Disconnected",
+      "format-linked": "{ifname} (No IP) ",
+      "format-disconnected": "<span size='13000'>  </span>Disconnected",
+      "tooltip-format-wifi": "Signal Strenght: {signalStrength}%"
+    },
     "tray": {
         "icon-size": 21,
         "spacing": 10
@@ -28,10 +27,8 @@
         "max-length": 50
     },
     "clock": {
-        "timezone": "Asia/Dubai",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": " {:%d/%m/%Y}",
-        "format": " {:%H:%M}"
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "format": "  {:%H:%M  󰸗  %d/%m}"
     },
     "backlight": {
         "device": "intel_backlight",
