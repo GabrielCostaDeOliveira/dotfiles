@@ -1,0 +1,3 @@
+[submodule "hyprland/.config/hypr/themehyprland"]
+	path = hyprland/.config/hypr/themehyprland
+	url = https://github.com/catppuccin/hyprland
