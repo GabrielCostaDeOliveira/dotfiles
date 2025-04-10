@@ -7,10 +7,10 @@
     "modules-center": ["clock"],
     "modules-right": ["pulseaudio", "backlight", "battery", "network", "tray", "custom/lock", "custom/power"],
     "network": {
-      "format-wifi": "<span size='13000'>   </span>{essid}",
-      "format-ethernet": "<span size='13000'> 󰤭  </span> Disconnected",
+      "format-wifi": "<span size='13000'>  </span>{essid}",
+      "format-ethernet": "<span size='13000'>󰤭 </span> Disconnected",
       "format-linked": "{ifname} (No IP) ",
-      "format-disconnected": "<span size='13000'>  </span>Disconnected",
+      "format-disconnected": "<span size='13000'> </span>Disconnected",
       "tooltip-format-wifi": "Signal Strenght: {signalStrength}%"
     },
     "tray": {
@@ -28,7 +28,7 @@
     },
     "clock": {
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-    "format": "  {:%H:%M  󰸗  %d/%m}"
+    "format": "    {:%H:%M   %d/%B}"
     },
     "backlight": {
         "device": "intel_backlight",
@@ -48,8 +48,8 @@
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
-        "format": "{icon} {volume}%",
-        "format-muted": "",
+        "format": " <span size='13000'>{icon}</span> {volume}%",
+        "format-muted": " ",
         "format-icons": {
             "default": ["", "", " "]
         },
