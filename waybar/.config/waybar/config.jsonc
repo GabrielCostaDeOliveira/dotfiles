@@ -1,68 +1,145 @@
 {
-    "layer": "top", // Waybar at top layer
-    "position": "top", // Waybar position (top|bottom|left|right)
-    // "width": 1280, // Waybar width
-    // Choose the order of the modules
-    "modules-left": ["hyprland/workspaces"],
-    "modules-center": ["clock"],
-    "modules-right": ["pulseaudio", "backlight", "battery", "network", "tray", "custom/lock", "custom/power"],
-    "network": {
-      "format-wifi": "<span size='13000'>  </span>{essid}",
-      "format-ethernet": "<span size='13000'>󰤭 </span> Disconnected",
-      "format-linked": "{ifname} (No IP) ",
-      "format-disconnected": "<span size='13000'> </span>Disconnected",
-      "tooltip-format-wifi": "Signal Strenght: {signalStrength}%"
+	"layer": "top",
+	"modules-left": ["custom/launcher","cpu","memory","disk","hyprland/workspaces"],
+	"modules-center": ["clock"],
+	"modules-right": ["custom/keybinds","tray", "cava", "hyprland/language","backlight","pulseaudio","battery","custom/power"],
+	
+	"pulseaudio": {
+		"tooltip": false,
+		"scroll-step": 5,
+		"format": "{icon}  {volume}%",
+		"format-muted": "muted",
+		"on-click":"pactl set-sink-mute @DEFAULT_SINK@ toggle",
+		"format-icons": {
+			"default": ["", "", ""]
+		}
+	},
+    "cava": {
+            "framerate": 240,
+            "autosens": 1,
+            "sensitivity": 5,
+            "bars": 8,
+            "lower_cutoff_freq": 50,
+            "higher_cutoff_freq": 10000,
+            "method": "pulse",
+            "source": "auto",
+            "stereo": false,
+            "reverse": false,
+            "bar_delimiter": 0,
+            "monstercat": true,
+            "waves": true,
+            "noise_reduction": 0.77,
+            "input_delay": 0,
+            "format-icons" : ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" ],
+             },
+
+    "custom/keybinds": {
+        "format": "{icon} KB",
+        "format-icons": ["󰘳"],
+        "on-click": "bash ~/Documents/themes/keybinds/keybinds.sh"
     },
-    "tray": {
-        "icon-size": 21,
-        "spacing": 10
-    },
-    "custom/music": {
-        "format": "  {}",
-        "escape": true,
-        "interval": 5,
-        "tooltip": false,
-        "exec": "playerctl metadata --format='{{ title }}'",
-        "on-click": "playerctl play-pause",
-        "max-length": 50
-    },
-    "clock": {
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-    "format": "    {:%H:%M   %d/%B}"
-    },
+
     "backlight": {
         "device": "intel_backlight",
-        "format": "{icon}",
-        "format-icons": ["", "", "", "", "", "", "", "", ""]
+        "format": "{icon}  {percent}%",
+        "format-icons": ["", ""]
     },
-    "battery": {
+        "battery": {
+        "bat": "BAT0",
+        "interval": 60,
         "states": {
             "warning": 30,
             "critical": 15
         },
+        "format": "{icon}  {capacity}%",
+        "format-icons": ["", "", "", "", ""],
+        "max-length": 25
+    },
+
+    "disk": {
+        "interval": 30,
+        "format": "  {percentage_used}%",
+        "path": "/"
+    },
+    "privacy": {
+        "icon-spacing": 10,
+        "icon-size": 18,
+        "transition-duration": 250,
+        "tooltip": false,
+        "modules": [
+            {
+                "type": "screenshare",
+                "tooltip": true,
+                "tooltip-icon-size": 24
+            },
+            {
+                "type": "audio-out",
+                "tooltip": true,
+                "tooltip-icon-size": 24
+            },
+            {
+                "type": "audio-in",
+                "tooltip": true,
+                "tooltip-icon-size": 24
+            }
+        ]
+    },
+
+
+    "hyprland/language": {
+        "format": "  {1}",
+        "tooltip": false,
+    },
+    "cpu": {
+        "interval": 15,
+        "format": "  {}%",
+        "max-length": 10
+    },
+    "memory": {
+        "interval": 30,
+        "format": "  {}%",
+        "max-length": 10
+    },
+    "custom/launcher":{
+        "format": " ",
+        "on-click": "rofi -show drun",
+        "on-click-right": "killall rofi",
+        "tooltip": false,
+    },
+    "custom/power":{
+        "format": "⏻ ",
+        "tooltip": false,
+        "on-click": "bash ~/.config/rofi/powermenu.sh",
+        "on-click-right": "killall rofi",
+    },
+    "clock": {
+        "format": "  {:%A - %B %d, %Y - %R}",
+        "tooltip": false,
+    },
+    "hyprland/workspaces": {
         "format": "{icon}",
-        "format-charging": "",
-        "format-plugged": "",
-        "format-alt": "{icon}",
-        "format-icons": ["", "",  "", "", "", "", "", "", "", "", "", ""]
-    },
-    "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
-        "format": " <span size='13000'>{icon}</span> {volume}%",
-        "format-muted": " ",
+        "tooltip": false,
         "format-icons": {
-            "default": ["", "", " "]
-        },
-        "on-click": "pavucontrol"
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": "",
+            "urgent": "",
+            "active": "",
+            "default": ""
     },
-    "custom/lock": {
-        "tooltip": false,
-        "on-click": "sh -c '(sleep 0.5s; swaylock --grace 0)' & disown",
-        "format": ""
+    "tray": {
+    "icon-size": 21,
+    "spacing": 10
+}
     },
-    "custom/power": {
+    "network": {
+        "interface": "wlan0",
+        "format-wifi": "󰘊 {essid}({signalStrength}%)",
+        "format-ethernet": "  {ipaddr}/{cidr}",
+        "format-disconnected": "disconnected",
         "tooltip": false,
-        "on-click": "wlogout &",
-        "format": ""
+        "max-length": 50,
     }
 }
