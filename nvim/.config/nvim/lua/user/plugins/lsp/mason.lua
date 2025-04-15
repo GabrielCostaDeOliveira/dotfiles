@@ -24,10 +24,10 @@ return {
         "html",
         "cssls",
         "tailwindcss",
-        "svelte",
+        -- "svelte",
         "lua_ls",
-        "graphql",
-        "emmet_ls",
+        -- "graphql",
+        -- "emmet_ls",
         "clangd",
         "pyright",
         -- Note: dartls is handled manually for Flutter
